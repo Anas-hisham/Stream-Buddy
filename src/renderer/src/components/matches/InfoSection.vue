@@ -35,7 +35,7 @@ defineProps({
         type="text"
         placeholder="Date"
         v-model="matchInfo.date"
-        class="pl-8 w-full border py-2 px-3 rounded-md"
+        class="pl-8 w-full border p-3 rounded-md"
       />
     </div>
   </div>

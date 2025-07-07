@@ -28,7 +28,7 @@
 
       <template v-if="field.type === 'text' || field.type === 'integer'">
         <div
-          class="px-3 py-3 max-h-12 border relative rounded-md"
+          class="mt-1 p-3 max-h-12 border relative rounded-md"
           :class="displayMode === 'dark' ? 'border-white' : 'border-black'"
         >
           <i
@@ -60,7 +60,7 @@
 
       <template v-else-if="field.type === 'image'">
         <div
-          class="flex justify-between border px-4 h-12 items-center gap-3 rounded-md"
+          class="flex justify-between border px-4 h-12 items-center gap-3 rounded-md mt-1"
           :class="displayMode === 'dark' ? 'border-white' : 'border-black'"
         >
           <span class="text-sm opacity-80">{{ field.name }}</span>

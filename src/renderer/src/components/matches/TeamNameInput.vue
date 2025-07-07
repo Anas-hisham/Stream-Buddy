@@ -37,7 +37,7 @@ defineProps({
         v-model="match[matchIndex === 0 ? 'firstMatch' : 'secondMatch'][`${side}TeamName`]"
         type="text"
         :placeholder="`${side === 'left' ? 'Left' : 'Right'} Team Name`"
-        class="pl-8 w-full border py-2 placeholder-opacity-100 rounded-md"
+        class="pl-8 w-full border p-3 placeholder-opacity-100 rounded-md"
       />
     </div>
   </div>

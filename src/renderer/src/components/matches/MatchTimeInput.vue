@@ -33,7 +33,7 @@ defineProps({
         v-model="match[matchIndex === 0 ? 'firstMatch' : 'secondMatch'].matchTime"
         type="text"
         placeholder="Match Time"
-        class="pl-8 w-full border py-2 px-2.5 placeholder-opacity-100 rounded-md"
+        class="pl-8 w-full border p-3 placeholder-opacity-100 rounded-md"
       />
     </div>
   </div>
