@@ -2,7 +2,6 @@ import { resolve } from 'path'
 import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
-import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
   main: {
@@ -26,17 +25,6 @@ export default defineConfig({
         '@renderer': resolve('src/renderer/src')
       }
     },
-    plugins: [
-      vue(),
-      tailwindcss(),
-      viteStaticCopy({
-        targets: [
-          {
-            src: 'public/icons/icon.ico',
-            dest: 'assets/icons'
-          }
-        ]
-      })
-    ]
+    plugins: [vue(), tailwindcss()]
   }
 })

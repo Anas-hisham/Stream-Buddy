@@ -11,7 +11,7 @@ export function createWindow() {
     height: 600,
     show: false,
     autoHideMenuBar: true,
-    icon: path.join(import.meta.dirname, '..', PATHS.ICON),
+    icon: path.join(import.meta.dirname, '..', '..', PATHS.ICON),
     webPreferences: {
       preload: path.join(import.meta.dirname, PATHS.PRELOAD),
       nodeIntegration: false
