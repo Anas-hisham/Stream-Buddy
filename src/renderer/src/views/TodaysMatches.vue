@@ -16,17 +16,15 @@
       </div>
 
       <!-- Matches Sections -->
-      <div data-aos="zoom-in">
-        <MatchSection
-          v-for="(match, matchIndex) in matches"
-          :key="matchIndex"
-          :match="match"
-          :matchIndex="matchIndex"
-          :displayMode="appStore.settings.displayMode"
-          :uploadImage="handleuploadImage"
-          :removeImage="handleRemoveImage"
-        />
-      </div>
+      <MatchSection
+        v-for="(match, matchIndex) in matches"
+        :key="matchIndex"
+        :match="match"
+        :matchIndex="matchIndex"
+        :displayMode="appStore.settings.displayMode"
+        :uploadImage="handleuploadImage"
+        :removeImage="handleRemoveImage"
+      />
     </div>
   </div>
   <ViewButtons
