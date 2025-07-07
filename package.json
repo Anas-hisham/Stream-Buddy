@@ -1,9 +1,9 @@
 {
   "name": "gl-stream",
+  "productName": "GL Stream",
   "version": "1.3.1",
-  "description": "GL Stream",
+  "private": true,
   "type": "module",
-  "author": "Anas Hisham",
   "main": "./out/main/index.js",
   "scripts": {
     "format": "prettier --write .",
@@ -47,6 +47,7 @@
     "vue-eslint-parser": "^10.1.3"
   },
   "build": {
+    "artifactName": "GL Stream.${ext}",
     "publish": [
       {
         "provider": "github",
