@@ -7,7 +7,7 @@
       Team Score
     </label>
     <div
-      class="relative px-4 py-3 border"
+      class="relative px-4 py-3 border rounded-md"
       :class="displayMode === 'dark' ? 'text-white border-white' : 'text-black border-black'"
     >
       <i
@@ -19,7 +19,7 @@
         min="0"
         v-model.number="team.teamScore"
         placeholder="Team Score"
-        class="outline-none pl-5 w-full bg-transparent"
+        class="outline-none pl-5 w-full bg-transparent "
         :class="
           displayMode === 'dark' ? 'placeholder-white text-white' : 'placeholder-black text-black'
         "

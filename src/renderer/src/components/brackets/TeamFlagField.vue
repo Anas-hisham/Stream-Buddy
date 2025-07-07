@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-between lg:col-span-2 px-4 h-14 items-center gap-3 md:col-span-2"
+    class="flex justify-between lg:col-span-2 px-4 h-14 items-center gap-3 md:col-span-2 rounded-md"
     :class="displayMode === 'dark' ? 'bg-[#1f2937] text-white' : 'bg-gray-100 text-black shadow-md'"
   >
     <span class="text-sm">Team Flag</span>
@@ -8,7 +8,7 @@
       <img
         :src="teamFlag"
         alt="Flag"
-        class="w-12 h-12 object-cover cursor-pointer"
+        class="w-12 h-12 object-cover cursor-pointer rounded"
         @click="onAddClick(index, 'flag')"
         title="Click to change flag"
       />

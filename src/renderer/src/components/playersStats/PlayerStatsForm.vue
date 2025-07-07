@@ -33,9 +33,9 @@
       :onInputChange="(val) => (player.economyScore = Number(val))"
     />
 
-    <div class="grid gap-2">
+    <div class="grid gap-2 ">
       <div
-        class="flex justify-between border px-4 h-14 items-center gap-3"
+        class="flex justify-between border px-4 h-14 items-center gap-3 rounded-md"
         :class="displayMode === 'dark' ? 'text-white border-white' : 'text-black border-black'"
       >
         <span class="text-sm opacity-65">Hero Image</span>
@@ -43,7 +43,7 @@
           <img
             :src="heroImage"
             alt="Hero"
-            class="w-12 h-12 object-cover cursor-pointer"
+            class="w-12 h-12 object-cover cursor-pointer rounded"
             @click="onImageChange(index)"
             title="Click to change image"
           />

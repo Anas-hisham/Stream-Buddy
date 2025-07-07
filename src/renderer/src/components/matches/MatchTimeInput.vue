@@ -30,10 +30,10 @@ defineProps({
         :class="displayMode === 'dark' ? 'text-white' : 'text-black'"
       ></i>
       <input
+        v-model="match[matchIndex === 0 ? 'firstMatch' : 'secondMatch'].matchTime"
         type="text"
         placeholder="Match Time"
-        v-model="match[matchIndex === 0 ? 'firstMatch' : 'secondMatch'].matchTime"
-        class="pl-8 w-full border py-2 px-2.5 placeholder-opacity-100"
+        class="pl-8 w-full border py-2 px-2.5 placeholder-opacity-100 rounded-md"
       />
     </div>
   </div>

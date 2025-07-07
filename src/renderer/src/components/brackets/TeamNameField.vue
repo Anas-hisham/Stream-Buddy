@@ -19,7 +19,7 @@
         v-model="team.teamName"
         maxlength="13"
         placeholder="Team Name"
-        class="outline-none pl-5 w-full bg-transparent"
+        class="outline-none pl-5 w-full bg-transparent rounded-md"
         :class="
           displayMode === 'dark' ? 'placeholder-white text-white' : 'placeholder-black text-black'
         "

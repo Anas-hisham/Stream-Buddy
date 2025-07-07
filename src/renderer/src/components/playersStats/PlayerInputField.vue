@@ -9,7 +9,7 @@
     </label>
 
     <div
-      class="px-4 py-3 border relative"
+      class="px-4 py-3 border relative rounded-md"
       :class="displayMode === 'dark' ? 'text-white border-white' : 'text-black border-black'"
     >
       <i

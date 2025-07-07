@@ -13,7 +13,7 @@ defineProps({
 
 <template>
   <h2
-    class="font-semibold uppercase text-sm w-full py-4 text-start px-5"
+    class="font-semibold uppercase text-sm w-full py-4 text-start px-5 rounded-t-lg"
     :class="displayMode === 'dark' ? 'text-white bg-[#22292f]' : 'text-black bg-gray-200'"
   >
     {{ matchIndex === 0 ? 'first Match' : 'second Match' }}

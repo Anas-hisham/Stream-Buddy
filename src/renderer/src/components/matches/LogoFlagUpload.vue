@@ -30,7 +30,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex justify-between items-center border px-4 py-2">
+  <div class="flex justify-between items-center border px-4 h-12 rounded-md">
     <span class="opacity-60"
       >{{ side === 'left' ? 'Left' : 'Right' }} Team {{ type === 'logo' ? 'Logo' : 'Flag' }}</span
     >
@@ -46,7 +46,7 @@ defineProps({
             `${side}Team${type === 'logo' ? 'Logo' : 'Flag'}`
           ]
         "
-        class="w-8 h-8 object-cover cursor-pointer"
+        class="w-10 h-10 object-cover cursor-pointer rounded"
         @click="uploadImage(matchIndex, `${side}Team${type === 'logo' ? 'Logo' : 'Flag'}`)"
         title="Click to change image"
       />

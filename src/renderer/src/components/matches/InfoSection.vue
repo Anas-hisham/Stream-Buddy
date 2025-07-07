@@ -14,7 +14,7 @@ defineProps({
 <template>
   <!-- Info Header -->
   <h2
-    class="font-semibold uppercase text-sm w-full py-4 text-start px-5"
+    class="font-semibold uppercase text-sm w-full py-4 text-start px-5 rounded-t-lg"
     :class="displayMode === 'dark' ? 'text-white bg-[#22292f]' : 'text-black bg-gray-200'"
   >
     INFO
@@ -35,7 +35,7 @@ defineProps({
         type="text"
         placeholder="Date"
         v-model="matchInfo.date"
-        class="pl-8 w-full border py-2 px-3"
+        class="pl-8 w-full border py-2 px-3 rounded-md"
       />
     </div>
   </div>
