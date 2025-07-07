@@ -8,7 +8,7 @@ defineProps({
     type: String,
     default: 'dark'
   }
-});
+})
 </script>
 
 <template>

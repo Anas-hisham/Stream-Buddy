@@ -17,7 +17,7 @@ defineProps({
     type: String,
     default: 'dark'
   }
-});
+})
 </script>
 
 <template>
@@ -34,9 +34,9 @@ defineProps({
         :class="displayMode === 'dark' ? 'text-white' : 'text-black'"
       ></i>
       <input
+        v-model="match[matchIndex === 0 ? 'firstMatch' : 'secondMatch'][`${side}TeamName`]"
         type="text"
         :placeholder="`${side === 'left' ? 'Left' : 'Right'} Team Name`"
-        v-model="match[matchIndex === 0 ? 'firstMatch' : 'secondMatch'][`${side}TeamName`]"
         class="pl-8 w-full border py-2 placeholder-opacity-100"
       />
     </div>

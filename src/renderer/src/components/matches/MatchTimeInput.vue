@@ -2,16 +2,16 @@
 defineProps({
   match: {
     type: Object,
-    required: true,
+    required: true
   },
   matchIndex: {
     type: Number,
-    required: true,
+    required: true
   },
   displayMode: {
     type: String,
-    default: 'dark',
-  },
+    default: 'dark'
+  }
 })
 </script>
 

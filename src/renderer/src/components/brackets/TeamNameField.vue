@@ -31,6 +31,6 @@
 <script setup>
 const props = defineProps({
   team: Object,
-  displayMode: String,
+  displayMode: String
 })
 </script>

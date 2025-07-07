@@ -2,12 +2,12 @@
 defineProps({
   matchInfo: {
     type: Object,
-    required: true,
+    required: true
   },
   displayMode: {
     type: String,
-    default: 'dark',
-  },
+    default: 'dark'
+  }
 })
 </script>
 
@@ -23,7 +23,7 @@ defineProps({
   <!-- Date Input -->
   <div class="p-4 mb-10" :class="displayMode === 'dark' ? 'bg-[#1f2937]' : 'bg-gray-100'">
     <label
-      v-if="(matchInfo.date !== '')"
+      v-if="matchInfo.date !== ''"
       class="text-sm font-semibold block mb-1"
       :class="displayMode === 'dark' ? 'text-white' : 'text-black'"
     >

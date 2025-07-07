@@ -22,9 +22,9 @@
         :value="value"
         :placeholder="placeholder"
         class="outline-hidden pl-5 w-full bg-transparent"
-        :class="displayMode === 'dark'
-          ? 'placeholder-white text-white'
-          : 'placeholder-black text-black'"
+        :class="
+          displayMode === 'dark' ? 'placeholder-white text-white' : 'placeholder-black text-black'
+        "
         @input="onInput($event)"
       />
     </div>
@@ -38,19 +38,19 @@ const props = defineProps({
   placeholder: String,
   displayMode: {
     type: String,
-    default: 'light',
+    default: 'light'
   },
   type: {
     type: String,
-    default: 'text',
+    default: 'text'
   },
   onInputChange: {
     type: Function,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 
 function onInput(event) {
-  props.onInputChange(event.target.value);
+  props.onInputChange(event.target.value)
 }
 </script>

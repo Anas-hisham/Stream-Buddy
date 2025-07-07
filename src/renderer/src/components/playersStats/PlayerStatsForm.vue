@@ -1,5 +1,5 @@
 <template>
-  <div class="grid gap-6 py-4 ">
+  <div class="grid gap-6 py-4">
     <PlayerInputField
       :value="player.playerName"
       label="Player Name"
@@ -97,32 +97,32 @@
 </template>
 
 <script setup>
-import PlayerInputField from './PlayerInputField.vue';
+import PlayerInputField from './PlayerInputField.vue'
 
 defineProps({
   player: {
     type: Object,
-    required: true,
+    required: true
   },
   index: {
     type: Number,
-    required: true,
+    required: true
   },
   displayMode: {
     type: String,
-    default: 'light',
+    default: 'light'
   },
   heroImage: {
     type: String,
-    default: '',
+    default: ''
   },
   onImageChange: {
     type: Function,
-    required: true,
+    required: true
   },
   onImageRemove: {
     type: Function,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 </script>

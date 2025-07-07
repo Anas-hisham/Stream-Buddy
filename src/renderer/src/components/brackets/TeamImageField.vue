@@ -38,6 +38,6 @@ const props = defineProps({
   displayMode: String,
   index: Number,
   onAddClick: Function,
-  onRemoveClick: Function,
+  onRemoveClick: Function
 })
 </script>

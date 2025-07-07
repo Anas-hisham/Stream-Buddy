@@ -1,9 +1,9 @@
-let mainWindow = null;
+let mainWindow = null
 
 export function setMainWindow(window) {
-    mainWindow = window;
+  mainWindow = window
 }
 
 export function getMainWindow() {
-    return mainWindow;
+  return mainWindow
 }

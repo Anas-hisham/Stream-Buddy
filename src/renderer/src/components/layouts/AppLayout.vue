@@ -1,23 +1,23 @@
 <template>
-    <div
+  <div
+    :class="[
+      'app-container flex h-screen flex-col transition-colors duration-500 relative',
+      appStore.isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'
+    ]"
+  >
+    <AppToolbar />
+    <div class="grid grid-cols-15 pt-15">
+      <SideNav
         :class="[
-            'app-container flex h-screen flex-col transition-colors duration-500 relative',
-            appStore.isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black',
+          appStore.isFullNavMode
+            ? 'col-span-4 md:col-span-3 lg:col-span-2'
+            : 'col-span-1 lg:col-span-1'
         ]"
-    >
-        <AppToolbar />
-        <div class="grid grid-cols-15 pt-15">
-            <SideNav
-                :class="[
-                    appStore.isFullNavMode
-                        ? 'col-span-4 md:col-span-3 lg:col-span-2'
-                        : 'col-span-1 lg:col-span-1',
-                ]"
-            />
-            <MainContent :path="route.path" />
-        </div>
-        <UpdateModal />
+      />
+      <MainContent :path="route.path" />
     </div>
+    <UpdateModal />
+  </div>
 </template>
 
 <script setup>
@@ -34,22 +34,21 @@ const route = useRoute()
 const appStore = useAppStore()
 
 onMounted(async () => {
-    initializeAnimation()
-    await appStore.initializeSettings()
-
+  initializeAnimation()
+  await appStore.initializeSettings()
 })
 
 watch(() => appStore.settings, appStore.handleSettingsChange, { deep: true })
 watch(
-    () => route.path,
-    (newPath) => {
-        appStore.updateLastViewedPath(newPath)
-        initializeAnimation()
-    },
+  () => route.path,
+  (newPath) => {
+    appStore.updateLastViewedPath(newPath)
+    initializeAnimation()
+  }
 )
 
 function initializeAnimation() {
-    AOS.refresh()
+  AOS.refresh()
 }
 </script>
 
