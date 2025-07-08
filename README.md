@@ -1,21 +1,35 @@
-# Electron + Vue + Vite Project
+# 🎮 Stream Buddy
 
-This is an Electron application using Vue 3 and Vite, featuring:
+Stream Buddy is a powerful Electron + Vue 3 desktop application designed for stream teams managing game tournaments. It dynamically generates JSON files from user inputs across multiple customizable views, and integrates seamlessly with stream tools like OBS and vMix.
 
-- Hot reload support for both Electron main and Vue renderer processes
-- Secure Electron context isolation with preload script
-- ESLint and Prettier integration for consistent code style and linting
-- Development and production build workflows
 
 ---
 
 ## Features
 
-- **Vue 3** with Vite as the build tool and dev server
-- Electron main process with secure context isolation and IPC communication
-- Preload script exposing safe API to renderer process
-- Hot-reloading during development for both Electron and Vue
-- Code linting with ESLint (Vue plugin) and formatting with Prettier
+- **Dynamic View Builder** – Create and customize your own views with sections and input types
+- **Modular Presets System** – Save, update, delete, and apply presets to switch stream layouts quickly
+- **Multiple Built-in Views** – Brackets, Today’s Matches, Player Stats, Teams, Settings, and more
+- **JSON Generator** – Export live data to JSON files for integration with streaming platforms
+- **Image Uploads** – Easily attach team logos, flags, and other images
+- **Auto Updates** – Built-in update checker and automatic updater
+- **Persistent State** – Save inputs and state locally across app restarts
+- **Customizable UI** – Light/Dark theme, compact/full nav, animated transitions
+- **Secure Architecture** – Uses Electron context isolation and IPC safely
+
+---
+
+## 🛠 Tech Stack
+
+| Layer         | Technology                 |
+|---------------|----------------------------|
+| Backend       | Electron + Node.js         |
+| Frontend      | Vue 3 (Composition API)    |
+| State Mgmt    | Pinia                      |
+| Styling       | TailwindCSS                |
+| Formatting    | ESLint + Prettier          |
+| Packaging     | Electron Builder           |
+| CI/CD         | GitHub Actions             |
 
 ---
 

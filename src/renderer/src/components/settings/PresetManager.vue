@@ -85,10 +85,11 @@
             </div>
           </div>
 
-          <div v-if="settingsStore.updatingPreset === preset.name" class="mt-4 pl-4 space-y-3 border-l-2" :class="appStore.settings.displayMode === 'dark' ? 'border-gray-500/50' : 'border-gray-200'
+          <div v-if="settingsStore.updatingPreset === preset.name" class="mt-4 pl-4  border-l-2" :class="appStore.settings.displayMode === 'dark' ? 'border-gray-500/50' : 'border-gray-200'
             ">
             <template v-for="(view, i) in settingsStore.tempUpdatedViews" :key="i">
-              <div v-if="view.title !== 'Settings'" class="flex items-center justify-between">
+              <div v-if="(view.title !== 'Settings' && view.title !== 'View Builder')"
+                class="flex items-center justify-between hover:bg-gray-500 transition-all duration-300 p-3 rounded-lg">
                 <span :class="[
                   'font-medium text-sm',
                   appStore.settings.displayMode === 'light' ? 'text-gray-700' : 'text-gray-200'
