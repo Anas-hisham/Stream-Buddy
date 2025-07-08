@@ -37,7 +37,3 @@ export function createWindow() {
 
   return mainWindow
 }
-
-export function getMainWindow() {
-  return mainWindow
-}

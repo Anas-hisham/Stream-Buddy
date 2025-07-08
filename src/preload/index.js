@@ -71,13 +71,17 @@ const myAPI = {
   openFileDialog: (options) => ipcRenderer.invoke('dialogOpenFile', options),
   readFile: (path) => ipcRenderer.invoke('fileRead', path),
 
+  // ────────────────────────────────
+  // Custom View
+  // ────────────────────────────────
   saveViewCache: (viewPath, data) => ipcRenderer.invoke('saveViewCache', viewPath, data),
   loadViewCache: (viewPath) => ipcRenderer.invoke('loadViewCache', viewPath),
-
   saveViewData: (viewName, data) => ipcRenderer.invoke('saveViewData', viewName, data),
-
   clearViewCache: (path) => ipcRenderer.invoke('clearViewCache', path),
 
+  // ────────────────────────────────
+  // View Builder
+  // ────────────────────────────────
   getAutoSavedView: (path) => ipcRenderer.invoke('getAutoSavedView', path),
   saveViewAutoSave: (path, viewData) => ipcRenderer.invoke('saveViewAutoSave', path, viewData),
   clearAutoSavedView: (path) => ipcRenderer.invoke('clearAutoSavedView', path)
