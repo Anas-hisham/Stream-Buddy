@@ -70,7 +70,7 @@ const router = useRouter()
 
 const withoutEditButton = (path) => {
   const without =
-    path !== '/settings' && path !== '/brackets' && path !== '/players' && path !== '/matches'
+    path !== '/settings' && path !== '/brackets' && path !== '/players-stats' && path !== "/today's-matches"
   return without
 }
 

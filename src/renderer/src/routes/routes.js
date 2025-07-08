@@ -22,12 +22,12 @@ const routes = [
     meta: { title: 'Brackets View' }
   },
   {
-    path: '/players',
+    path: '/players-stats',
     component: PlayersStatsView,
     meta: { title: 'Players Stats' }
   },
   {
-    path: '/matches',
+    path: "/today's-matches",
     component: TodaysMatchesView,
     meta: { title: "Today's Matches" }
   },
