@@ -56,8 +56,8 @@ This is an Electron application using Vue 3 and Vite, featuring:
 ## 📁 Project Folder Structure
 
 <pre><code>```
-
-
+GL Stream
+ 
 src/
 ├── main/                          # Main process (Electron backend)
 │   ├── config/                    # Manages global config settings
@@ -69,7 +69,6 @@ src/
 │   │   ├── updater/               # Auto-update handlers
 │   │   ├── views/                 # Handlers for views
 │   │   └── index.js               # Main process entry point
-│   ├── preload/                  # Preload scripts (safe bridge between main and renderer)
 │   ├── utils/                    # Utility functions for the main process
 │   │── windows/                   
 │   │   └──windowManager.js        # Logic for creating/managing Electron windows
@@ -102,6 +101,5 @@ src/
 │       ├── views/                    # App Views
 │       ├── App.vue                   # Root Vue component
 │       └── main.js                   # Entry point for the Vue app
-
 
  ```</code></pre>
