@@ -2,7 +2,7 @@ import { ipcMain } from 'electron'
 import pkg from 'electron-updater'
 const { autoUpdater } = pkg
 
-function setupAutoUpdaterHandlers(getMainWindow, appendToLog, getLogFilePathGlobal) {
+function setupAutoUpdaterHandlers(mainWindow, appendToLog, getLogFilePathGlobal) {
   // Set autoDownload to false so we can control when to download updates
   autoUpdater.autoDownload = false
 
@@ -15,7 +15,7 @@ function setupAutoUpdaterHandlers(getMainWindow, appendToLog, getLogFilePathGlob
   // ======================
   const safeSendToRenderer = (channel, data) => {
     try {
-      const currentMainWindow = getMainWindow()
+      const currentMainWindow = mainWindow()
       if (currentMainWindow && !currentMainWindow.isDestroyed()) {
         currentMainWindow.webContents.send(channel, data)
       } else {

@@ -4,7 +4,7 @@ import { appendToLog } from '../../utils/fileManager.js'
 import { CACHE_KEYS, KEYS_TO_CLEAR } from '../../constants/index.js'
 
 function setupAppHandlers(store, setCustomSavePathGlobal, getLogFilePathGlobal) {
-  ipcMain.handle('clearDataCache', async () => {
+  ipcMain.handle('clearAllInputsDataCache', async () => {
     try {
       const viewCache = store.get(CACHE_KEYS.CUSTOM_VIEWS) || {}
 

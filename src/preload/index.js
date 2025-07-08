@@ -29,7 +29,7 @@ const myAPI = {
   getLastAppliedPreset: () => ipcRenderer.invoke('getLastPreset'),
   saveViewSettingsCache: (data) => ipcRenderer.invoke('saveSettingsCache', data),
   getViewSettingsCache: () => ipcRenderer.invoke('getSettingsCache'),
-  clearDataCache: () => ipcRenderer.invoke('clearDataCache'),
+  clearDataCache: () => ipcRenderer.invoke('clearAllInputsDataCache'),
 
   setCustomSavePath: (customPath) => ipcRenderer.invoke('setCustomSavePath', customPath),
 
