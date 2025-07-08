@@ -132,7 +132,7 @@ const route = useRoute()
 const appStore = useAppStore()
 
 const viewNotInSideNav = (path) => {
-  const without = path !== '/settings' && path !== '/welcome'
+  const without = path !== '/settings' && path !== '/welcome'&& path !== '/view-builder'
   return without
 }
 const getFirstLetter = (title) => {

@@ -24,6 +24,7 @@
         handle=".line-handle"
         @end="handleDragEnd"
         class="space-y-3"
+        group="lines"
       >
         <template #item="{ element: line, index: lineIndex }">
           <ViewLine

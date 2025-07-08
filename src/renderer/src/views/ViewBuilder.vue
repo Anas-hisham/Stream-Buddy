@@ -220,6 +220,10 @@ async function createView() {
 
   if (!isViewNameUnique()) {
     createViewErrors.viewName = "This view name already exists. Please choose a unique name."
+
+  }
+  if (newView.value.name.trim() === '') {
+    createViewErrors.viewName = "View name cannot be empty."
   }
 
   // ✅ Check section name uniqueness and emptiness
@@ -357,7 +361,12 @@ const removeSection = (index) => {
 }
 
 const addLine = (sectionIndex) => {
-  newView.value.sections[sectionIndex].lines.push({ fields: [] })
+  newView.value.sections[sectionIndex].lines.push({
+    fields: [{
+      name: '',
+      type: 'text'
+    }]
+  })
 }
 
 const removeLine = (sectionIndex, lineIndex) => {

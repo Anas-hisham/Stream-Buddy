@@ -2,7 +2,7 @@
   <div
     :class="[
       'app-container flex h-screen flex-col transition-colors duration-500 relative',
-      appStore.isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'
+      appStore.isDarkMode ? 'bg-[#2a3444] text-white' : 'bg-white text-black'
     ]"
   >
     <AppToolbar />
