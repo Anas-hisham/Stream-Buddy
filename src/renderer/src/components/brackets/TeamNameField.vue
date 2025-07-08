@@ -7,7 +7,7 @@
       Team Name
     </label>
     <div
-      class="relative px-4 py-3 border"
+      class="relative px-4 py-3 border rounded-md"
       :class="displayMode === 'dark' ? 'text-white border-white' : 'text-black border-black'"
     >
       <i
@@ -19,7 +19,7 @@
         v-model="team.teamName"
         maxlength="13"
         placeholder="Team Name"
-        class="outline-none pl-5 w-full bg-transparent rounded-md"
+        class="outline-none pl-5 w-full bg-transparent"
         :class="
           displayMode === 'dark' ? 'placeholder-white text-white' : 'placeholder-black text-black'
         "
