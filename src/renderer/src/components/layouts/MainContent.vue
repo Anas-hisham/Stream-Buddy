@@ -34,7 +34,7 @@ const props = defineProps({
 
 const staticRoutes = {
   '/welcome': Welcome,
-  '/brackets': Brackets,
+  '/brackets-view': Brackets,
   '/players-stats': PlayersStats,
   "/today's-matches": TodaysMatches,
   '/settings': Settings,

@@ -17,7 +17,7 @@ const routes = [
     meta: { title: 'Welcome' }
   },
   {
-    path: '/brackets',
+    path: '/brackets-view',
     component: BracketView,
     meta: { title: 'Brackets View' }
   },
