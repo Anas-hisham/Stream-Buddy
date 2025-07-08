@@ -68,12 +68,14 @@ src/
 │   │   ├── settings/              # Handlers for settings view
 │   │   ├── updater/               # Auto-update handlers
 │   │   ├── views/                 # Handlers for views
-│   ├── └── index.js              # Main process entry point
+│   │   └── index.js               # Main process entry point
 │   ├── preload/                  # Preload scripts (safe bridge between main and renderer)
 │   ├── utils/                    # Utility functions for the main process
-│   │── index.js                  # Main utility export or aggregator
-│   │── init.js                   # Initialization logic (setup configs, handlers, etc.)
-│   └── windowManager.js         # Logic for creating/managing Electron windows
+│   │── windows/                   
+│   │   └──windowManager.js        # Logic for creating/managing Electron windows
+│   │── Initialization/
+│   │   └──init.js                 # Initialization logic (setup configs, handlers, etc.)
+│   └── index.js                  # Main utility export or aggregator 
 │── preload/
 │   └── index.js
 ├── renderer/                     # Renderer process (Vue frontend)

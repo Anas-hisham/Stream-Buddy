@@ -1,9 +1,10 @@
 import { ipcMain } from 'electron'
+import { CACHE_KEYS } from '../../constants'
 
 export function setupViewBuilderHandlers(store) {
   ipcMain.handle('getAutoSavedView', async (event, key) => {
     try {
-      return store.get(`auto-saves.${key}`)
+      return store.get(`${CACHE_KEYS.BUILDER}.${key}`)
     } catch (error) {
       console.error('Error reading auto-saved view:', error)
       return null
@@ -12,7 +13,7 @@ export function setupViewBuilderHandlers(store) {
 
   ipcMain.handle('saveViewAutoSave', async (event, key, viewData) => {
     try {
-      store.set(`auto-saves.${key}`, viewData)
+      store.set(`${CACHE_KEYS.BUILDER}.${key}`, viewData)
     } catch (error) {
       console.error('Error saving auto-saved view:', error)
     }
@@ -20,7 +21,7 @@ export function setupViewBuilderHandlers(store) {
 
   ipcMain.handle('clearAutoSavedView', async (event, key) => {
     try {
-      store.delete(`auto-saves.${key}`)
+      store.delete(`${CACHE_KEYS.BUILDER}.${key}`)
     } catch (error) {
       console.error('Error clearing auto-saved view:', error)
     }

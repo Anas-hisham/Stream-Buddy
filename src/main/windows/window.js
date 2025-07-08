@@ -1,7 +1,7 @@
 import { shell, BrowserWindow } from 'electron'
 import { is } from '@electron-toolkit/utils'
 import path from 'path'
-import { PATHS } from './constants/index.js'
+import { PATHS } from '../constants/index.js'
 
 let mainWindow
 

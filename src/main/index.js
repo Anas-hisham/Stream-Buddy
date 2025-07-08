@@ -1,5 +1,5 @@
 import { app, ipcMain } from 'electron'
-import { initializeApp } from './init.js'
+import { initializeApp } from './initialization/init.js'
 import { appendToLog } from './utils/fileManager.js'
 import { getLogFilePathGlobal } from './config/index.js'
 
