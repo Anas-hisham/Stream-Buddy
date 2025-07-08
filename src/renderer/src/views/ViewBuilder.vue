@@ -2,27 +2,14 @@
   <div class="mb-10 mt-15 min-h-screen w-full overflow-y-auto transition-colors duration-200">
     <ViewTitle :currentViewBeingEdited="currentViewBeingEdited" :displayMode="displayMode" />
     <div class="max-w-7xl mx-auto w-full p-4 mt-6">
-      <ViewConfiguration
-        :displayMode="displayMode"
-        :newView="newView"
-        :viewNameError="viewNameError"
-        :validateViewName="validateViewName"
-      />
+      <ViewConfiguration :displayMode="displayMode" :newView="newView" :viewNameError="viewNameError"
+        :validateViewName="validateViewName" />
       <SectionsHeader :displayMode="displayMode" :addSection="addSection" />
 
-      <SectionsList
-        :displayMode="displayMode"
-        :newView="newView"
-        :validateSectionName="validateSectionName"
-        :sectionErrors="sectionErrors"
-        :removeSection="removeSection"
-        :fieldErrors="fieldErrors"
-        :validateFieldName="validateFieldName"
-        :removeField="removeField"
-        :addFieldToLine="addFieldToLine"
-        :removeLine="removeLine"
-        :addLine="addLine"
-      />
+      <SectionsList :displayMode="displayMode" :newView="newView" :validateSectionName="validateSectionName"
+        :sectionErrors="sectionErrors" :removeSection="removeSection" :fieldErrors="fieldErrors"
+        :validateFieldName="validateFieldName" :removeField="removeField" :addFieldToLine="addFieldToLine"
+        :removeLine="removeLine" :addLine="addLine" />
     </div>
   </div>
   <ViewButtons :displayMode="displayMode" :onSave="createView" :saveOnly="true" />
@@ -83,14 +70,7 @@ const hasUniqueSectionNames = computed(() => {
   return new Set(names).size === names.length
 })
 
-const sectionsHaveUniqueFields = computed(() =>
-  newView.value.sections.every((section) => {
-    const fieldNames = section.lines.flatMap((line) =>
-      line.fields.map((field) => field.name.trim().toLowerCase())
-    )
-    return new Set(fieldNames).size === fieldNames.length
-  })
-)
+
 
 const isSaveEnabled = computed(() => {
   const view = newView.value
@@ -115,7 +95,6 @@ const isSaveEnabled = computed(() => {
     hasFieldContent &&
     fieldsValid &&
     hasUniqueSectionNames.value &&
-    sectionsHaveUniqueFields.value &&
     Object.values(sectionErrors.value).every((e) => !e?.nameError) &&
     Object.keys(fieldErrors.value).length === 0
   )
@@ -195,7 +174,6 @@ function validateFieldName(sectionIndex, lineIndex, fieldIndex) {
     return
   }
 
-  const currentName = field.name.trim().toLowerCase()
   const allNames = []
 
   newView.value.sections[sectionIndex].lines.forEach((line, lIdx) => {
@@ -206,11 +184,8 @@ function validateFieldName(sectionIndex, lineIndex, fieldIndex) {
     })
   })
 
-  if (allNames.includes(currentName)) {
-    fieldErrors.value[key] = 'Field name must be unique.'
-  } else {
-    delete fieldErrors.value[key]
-  }
+  delete fieldErrors.value[key]
+
 }
 
 // ==============================================
@@ -230,6 +205,108 @@ async function autoSaveView() {
 }
 
 async function createView() {
+  let createViewErrors = {
+    viewName: "",
+    sectionsErrors: []
+  }
+
+  // ✅ Check if view name is unique
+  const isViewNameUnique = () =>
+    !props.allViews.some(
+      (view) =>
+        view.title.toLowerCase() === newView.value.name.toLowerCase().trim() &&
+        (!isEditingExistingView.value || view.path !== currentViewBeingEdited.value.path)
+    )
+
+  if (!isViewNameUnique()) {
+    createViewErrors.viewName = "This view name already exists. Please choose a unique name."
+  }
+
+  // ✅ Check section name uniqueness and emptiness
+  const sectionNamesErrors = () => {
+    const nameOccurrences = new Map()
+
+    newView.value.sections.forEach((section, i) => {
+      const name = section.name.trim().toLowerCase()
+      const errors = {}
+
+      if (name === "") {
+        errors.name = "Section name cannot be empty."
+      } else {
+        if (nameOccurrences.has(name)) {
+          errors.name = "Section name repeated and it must be unique."
+        } else {
+          // First time seeing this name
+          nameOccurrences.set(name, i)
+        }
+      }
+
+      createViewErrors.sectionsErrors[i] = {
+        ...errors,
+        linesErrors: []
+      }
+    })
+  }
+
+  sectionNamesErrors()
+
+  // ✅ Check field names inside lines inside sections
+  const fieldsNamesErrors = () => {
+    newView.value.sections.forEach((section, sectionIndex) => {
+      section.lines.forEach((line, lineIndex) => {
+        const fieldNames = line.fields.map((f) => f.name.trim().toLowerCase())
+
+        // prepare the linesErrors array if it doesn't exist
+        if (!createViewErrors.sectionsErrors[sectionIndex]) {
+          createViewErrors.sectionsErrors[sectionIndex] = { linesErrors: [] }
+        }
+        if (!createViewErrors.sectionsErrors[sectionIndex].linesErrors[lineIndex]) {
+          createViewErrors.sectionsErrors[sectionIndex].linesErrors[lineIndex] = {
+            fieldsErrors: []
+          }
+        }
+
+        // validate each field
+        fieldNames.forEach((name, fieldIndex) => {
+          if (name === "") {
+            createViewErrors.sectionsErrors[sectionIndex].linesErrors[lineIndex].fieldsErrors[fieldIndex] =
+              `Field  name cannot be empty.`
+          }
+        })
+      })
+    })
+  }
+  fieldsNamesErrors()
+
+  console.log("createViewErrors =>", createViewErrors)
+
+  viewNameError.value = createViewErrors.viewName || ''
+
+  sectionErrors.value = {}
+  fieldErrors.value = {}
+
+  createViewErrors.sectionsErrors.forEach((sectionError, sectionIndex) => {
+    if (sectionError.name) {
+      sectionErrors.value[sectionIndex] = {
+        nameError: sectionError.name
+      }
+    }
+
+    if (sectionError.linesErrors?.length) {
+      sectionError.linesErrors.forEach((lineError, lineIndex) => {
+        if (lineError?.fieldsErrors?.length) {
+          lineError.fieldsErrors.forEach((msg, fieldIndex) => {
+            if (msg) {
+              const key = `${sectionIndex}-${lineIndex}-${fieldIndex}`
+              fieldErrors.value[key] = msg
+            }
+          })
+        }
+      })
+    }
+  })
+
+
   if (!isSaveEnabled.value) return
 
   const viewToSave = {
@@ -254,8 +331,8 @@ async function createView() {
 
   const updatedViews = isEditingExistingView.value
     ? props.allViews.map((view) =>
-        view.path === currentViewBeingEdited.value.path ? viewToSave : view
-      )
+      view.path === currentViewBeingEdited.value.path ? viewToSave : view
+    )
     : [...props.settings.views, viewToSave]
 
   props.setSettings({ views: updatedViews })
